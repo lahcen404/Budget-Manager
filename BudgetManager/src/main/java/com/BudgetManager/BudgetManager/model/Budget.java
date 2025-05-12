@@ -14,6 +14,7 @@ import lombok.*;
 @RequiredArgsConstructor
 
 public class Budget {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
