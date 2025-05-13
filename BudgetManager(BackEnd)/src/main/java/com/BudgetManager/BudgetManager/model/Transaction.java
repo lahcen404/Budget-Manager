@@ -12,6 +12,14 @@ public class Transaction {
     private LocalDate date;
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "budget_id")
+    private Budget budget;
+
     public Long getId() {
         return id;
     }
