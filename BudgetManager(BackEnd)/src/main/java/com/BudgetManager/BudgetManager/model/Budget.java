@@ -3,9 +3,6 @@ package com.BudgetManager.BudgetManager.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -19,14 +16,13 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    private Double limitAmount;
-    private Double spentAmount;
+    private double limitAmount ;
 
-    @OneToMany(mappedBy = "budget", cascade = CascadeType.ALL)
-    private List<Transaction> transactions = new ArrayList<>();
+    private double spintAmount;
+
+
 }
