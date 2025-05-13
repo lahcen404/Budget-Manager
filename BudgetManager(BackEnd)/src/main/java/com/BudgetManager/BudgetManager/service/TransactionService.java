@@ -5,8 +5,11 @@ import com.BudgetManager.BudgetManager.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -32,6 +35,31 @@ public class TransactionService {
             existing.setDescription(updatedTransaction.getDescription());
             return transactionRepository.save(existing);
         });
+    }
+
+    // Filtrer par date
+    public List<Transaction> getTransactionsByDate(LocalDate date) {
+        return transactionRepository.findAll().stream()
+                .filter(t -> t.getDate().equals(date))
+                .collect(Collectors.toList());
+    }
+
+    //  Trier par montant
+    public List<Transaction> getTransactionsSortedByAmount(boolean ascending) {
+        return transactionRepository.findAll().stream()
+                .sorted(ascending ?
+                        Comparator.comparingDouble(Transaction::getAmount) :
+                        Comparator.comparingDouble(Transaction::getAmount).reversed())
+                .collect(Collectors.toList());
+    }
+
+    //   Trier par date
+    public List<Transaction> getTransactionsSortedByDate(boolean ascending) {
+        return transactionRepository.findAll().stream()
+                .sorted(ascending ?
+                        Comparator.comparing(Transaction::getDate) :
+                        Comparator.comparing(Transaction::getDate).reversed())
+                .collect(Collectors.toList());
     }
     //  delete
     public boolean deleteTransaction(Long id) {
