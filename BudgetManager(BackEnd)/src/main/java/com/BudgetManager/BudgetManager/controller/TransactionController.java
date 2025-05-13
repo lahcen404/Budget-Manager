@@ -13,8 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/transactions")
-@CrossOrigin(origins = "*") // autoriser les requêtes CORS si besoin
-public class TransactionController {
+ public class TransactionController {
 
     @Autowired
     private TransactionService transactionService;
@@ -49,20 +48,20 @@ public class TransactionController {
         return ResponseEntity.notFound().build();
     }
 
-    // 🔍 Filtrer par date
+    //  Filtrer par date
     @GetMapping("/filter/by-date")
     public ResponseEntity<List<Transaction>> getTransactionsByDate(
             @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return ResponseEntity.ok(transactionService.getTransactionsByDate(date));
     }
 
-    // 🔃 Trier par montant
+    // Trier par montant
     @GetMapping("/sort/by-amount")
     public ResponseEntity<List<Transaction>> getTransactionsSortedByAmount(@RequestParam(defaultValue = "true") boolean ascending) {
         return ResponseEntity.ok(transactionService.getTransactionsSortedByAmount(ascending));
     }
 
-    // 🔃 Trier par date
+    //  Trier par date
     @GetMapping("/sort/by-date")
     public ResponseEntity<List<Transaction>> getTransactionsSortedByDate(@RequestParam(defaultValue = "true") boolean ascending) {
         return ResponseEntity.ok(transactionService.getTransactionsSortedByDate(ascending));
