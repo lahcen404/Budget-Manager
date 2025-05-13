@@ -19,10 +19,14 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "budget",cascade = CascadeType.ALL)
-    private List<Category> category = new ArrayList<>();
 
-    private double limitAmount ;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-    private double spintAmount;
+    private Double limitAmount;
+    private Double spentAmount;
+
+    @OneToMany(mappedBy = "budget", cascade = CascadeType.ALL)
+    private List<Transaction> transactions = new ArrayList<>();
 }
