@@ -32,4 +32,40 @@ public class TransactionController {
     }
 
 
+    //  Modifier
+    @PutMapping("/{id}")
+    public ResponseEntity<Transaction> updateTransaction(@PathVariable Long id, @RequestBody Transaction updatedTransaction) {
+        Optional<Transaction> updated = transactionService.updateTransaction(id, updatedTransaction);
+        return updated.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    //  Supprimer
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTransaction(@PathVariable Long id) {
+        if (transactionService.deleteTransaction(id)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    // 🔍 Filtrer par date
+    @GetMapping("/filter/by-date")
+    public ResponseEntity<List<Transaction>> getTransactionsByDate(
+            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return ResponseEntity.ok(transactionService.getTransactionsByDate(date));
+    }
+
+    // 🔃 Trier par montant
+    @GetMapping("/sort/by-amount")
+    public ResponseEntity<List<Transaction>> getTransactionsSortedByAmount(@RequestParam(defaultValue = "true") boolean ascending) {
+        return ResponseEntity.ok(transactionService.getTransactionsSortedByAmount(ascending));
+    }
+
+    // 🔃 Trier par date
+    @GetMapping("/sort/by-date")
+    public ResponseEntity<List<Transaction>> getTransactionsSortedByDate(@RequestParam(defaultValue = "true") boolean ascending) {
+        return ResponseEntity.ok(transactionService.getTransactionsSortedByDate(ascending));
+    }
 }
+
