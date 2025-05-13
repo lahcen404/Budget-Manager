@@ -1,14 +1,15 @@
 package com.BudgetManager.BudgetManager.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category {
@@ -19,4 +20,8 @@ public class Category {
     private String name;
 
     private Double limitAmount;
+
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    private List<Transaction> transactions= new ArrayList<>();
+
 }
