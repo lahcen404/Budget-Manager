@@ -33,6 +33,14 @@ public class TransactionService {
             return transactionRepository.save(existing);
         });
     }
+    //  delete
+    public boolean deleteTransaction(Long id) {
+        if (transactionRepository.existsById(id)) {
+            transactionRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
     }
 
 
