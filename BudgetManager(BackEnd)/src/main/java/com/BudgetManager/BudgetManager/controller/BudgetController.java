@@ -32,6 +32,7 @@ public class BudgetController {
     public Budget getBudgetById(@PathVariable Long id){
         return budgetService.getBudgetById(id).orElseThrow();
     }
+
     @PutMapping("/{id}")
     public Budget updateProduct(@PathVariable Long id, @RequestBody Budget budget) {
         return budgetService.updateBudget(id,budget);
