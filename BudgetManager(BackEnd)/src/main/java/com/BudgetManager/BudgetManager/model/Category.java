@@ -23,7 +23,6 @@ public class Category {
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     private List<Transaction> transactions= new ArrayList<>();
 
-
     public Long getId() {
         return id;
     }
