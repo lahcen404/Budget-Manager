@@ -21,35 +21,51 @@ public class Transaction {
     @JoinColumn(name = "budget_id")
     private Budget budget;
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public double getAmount() {
-        return amount;
-    }
+  public double getAmount() {
+    return amount;
+  }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
+  public void setAmount(double amount) {
+    this.amount = amount;
+  }
 
-    public LocalDate getDate() {
-        return date;
-    }
+  public LocalDate getDate() {
+    return date;
+  }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
+  public void setDate(LocalDate date) {
+    this.date = date;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public Category getCategory() {
+    return category;
+  }
+
+  public void setCategory(Category category) {
+    this.category = category;
+  }
+
+  public Budget getBudget() {
+    return budget;
+  }
+
+  public void setBudget(Budget budget) {
+    this.budget = budget;
+  }
 }
