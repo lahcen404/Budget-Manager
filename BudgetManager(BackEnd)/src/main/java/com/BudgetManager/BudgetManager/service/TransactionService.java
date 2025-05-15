@@ -17,13 +17,13 @@ public class TransactionService {
 
 
         @Autowired
-  //  Ajouter une transaction
+  //  Ajouter une transactio
         private TransactionRepository transactionRepository;
         public Transaction addTransaction(Transaction transaction) {
             return transactionRepository.save(transaction);
 
         }
-//
+
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }
