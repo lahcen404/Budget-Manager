@@ -13,7 +13,18 @@ class BudgetManagerApplicationTests {
 
 	@Test
 	void testCreateBudget() {
+		Category category = new Category();
+		category.setId(1L);
+		category.setName("Category1");
+		Budget budget = new Budget();
+		budget.setLimitAmount(999.9);
+		budget.setSpentAmount(888.8);
+		budget.setCategory(category);
 
+		assertNotNull(budget);
+		assertEquals(999.9,budget.getLimitAmount());
+		assertEquals(888.8,budget.getSpentAmount());
+		assertEquals("Category1",budget.getCategory().getName());
 
 	}
 
