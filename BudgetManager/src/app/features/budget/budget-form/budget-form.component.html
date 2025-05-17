@@ -1,0 +1,19 @@
+<form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Category:</label>
+    <select formControlName="categoryId">
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label>Limit Amount:</label>
+    <input type="number" formControlName="limitAmount" />
+  </div>
+  <div>
+    <label>Spent Amount:</label>
+    <input type="number" formControlName="spentAmount" />
+  </div>
+  <button type="submit" [disabled]="budgetForm.invalid">Save</button>
+</form>
