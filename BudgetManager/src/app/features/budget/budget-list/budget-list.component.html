@@ -1,0 +1,25 @@
+<div *ngIf="budgets && budgets.length > 0; else noBudgets">
+  <div *ngFor="let budget of budgets" style="margin-bottom: 20px;">
+    <h3>Budget ID: {{ budget.id }}</h3>
+    <p *ngIf="budget.category">
+      <strong>Category:</strong> {{ budget.category.name }}
+    </p>
+    <p *ngIf="!budget.category">Category: Not available</p>
+    <p><strong>Limit Amount:</strong> {{ budget.limitAmount || 'N/A' }}</p>
+    <p><strong>Spent Amount:</strong> {{ budget.spentAmount || 'N/A' }}</p>
+    <div *ngIf="budget.transactions && budget.transactions.length > 0">
+      <h4>Transactions:</h4>
+      <ul>
+        <li *ngFor="let transaction of budget.transactions">
+          {{ transaction.description }} - {{ transaction.amount }} (Date: {{ transaction.date }})
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="!(budget.transactions && budget.transactions.length > 0)">
+      <p>No transactions available.</p>
+    </div>
+  </div>
+</div>
+<ng-template #noBudgets>
+  <p>No budgets available.</p>
+</ng-template>
