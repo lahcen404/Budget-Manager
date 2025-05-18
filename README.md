@@ -57,3 +57,5 @@ The **Budget Manager** is a financial management application designed to help us
 * **HttpClient**: Angular service for making HTTP requests.
 * **Angular Router**: A routing library for navigating between different views in the application.
 
+## [Postman Link ](https://bold-space-353782.postman.co/workspace/My-Workspace~49aab289-6de5-487b-8f91-58ce1aacf8db/collection/41299916-a2f94e09-8ed8-46d4-a25b-861447eca428?action=share&creator=41299916)
+
