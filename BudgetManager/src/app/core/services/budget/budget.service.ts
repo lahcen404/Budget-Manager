@@ -19,7 +19,7 @@ export class BudgetService {
     return this.http.get<Budget>(`${this.apiUrl}/${id}`);
   }
 
-  createBudget(budget: Budget): Observable<Budget> {
+  createBudget(budget: { spentAmount: any; limitAmount: any; categoryId: any }): Observable<Budget> {
     return this.http.post<Budget>(this.apiUrl, budget);
   }
 
