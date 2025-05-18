@@ -27,7 +27,7 @@ export class BudgetService {
     return this.http.put<Budget>(`${this.apiUrl}/${budget.id}`, budget);
   }
 
-  deleteBudget(id: number): Observable<void> {
+  deleteBudget(id: number | undefined): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

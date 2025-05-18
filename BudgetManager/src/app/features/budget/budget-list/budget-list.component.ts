@@ -29,4 +29,8 @@ export class BudgetListComponent implements OnInit {
       }
     });
   }
+
+  deleteBudget(id: number | undefined): void {
+    this.budgetService.deleteBudget(id).subscribe(() => this.loadBudgets());
+  }
 }
