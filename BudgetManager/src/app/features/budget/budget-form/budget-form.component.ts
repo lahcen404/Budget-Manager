@@ -40,15 +40,18 @@ export class BudgetFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.budgetForm.valid) {
-      const budget: Budget = {
-        category: { id: this.budgetForm.value.categoryId } as Category,
+      const budget = {
+        categoryId: this.budgetForm.value.categoryId,
         limitAmount: this.budgetForm.value.limitAmount,
-        spentAmount: this.budgetForm.value.spentAmount,
-        transactions: []
+        spentAmount: this.budgetForm.value.spentAmount
       };
+
+      console.log("Sending to backend:", budget);
+
       this.budgetService.createBudget(budget).subscribe(() => {
         this.router.navigate(['/budgets']);
       });
     }
   }
+
 }
