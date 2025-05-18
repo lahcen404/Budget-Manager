@@ -1,0 +1,13 @@
+<div *ngIf="transactions && transactions.length > 0; else noTransactions">
+  <div *ngFor="let transaction of transactions" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+    <p><strong>Description:</strong> {{ transaction.description }}</p>
+    <p><strong>Amount:</strong> {{ transaction.amount }}</p>
+    <p><strong>Date:</strong> {{ transaction.date }}</p>
+    <p><strong>Category:</strong> {{ transaction.category?.name }}</p>
+    <p><strong>Budget:</strong> {{ transaction.budget?.id }}</p>
+  </div>
+</div>
+
+<ng-template #noTransactions>
+  <p>No transactions available.</p>
+</ng-template>
