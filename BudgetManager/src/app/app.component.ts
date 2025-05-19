@@ -9,6 +9,9 @@ import {RouterOutlet} from '@angular/router';
   standalone: true,
 
   imports: [NavbarComponent, HomeComponent, TransactionListComponent, RouterOutlet],
+import { RouterOutlet } from '@angular/router';
+import {NavbarComponent} from './shared/navbar/navbar.component';
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,9 +1,19 @@
-import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import {TransactionListComponent} from './transaction-list/transaction-list.component';
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { BudgetListComponent } from './features/budget/budget-list/budget-list.component';
+import {BudgetFormComponent} from './features/budget/budget-form/budget-form.component';
+import {TransactionListComponent} from './features/transaction/transaction-list/transaction-list.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'budgets', component: BudgetListComponent },
+  { path: 'budgets/add', component: BudgetFormComponent },
   { path: 'transactions', component: TransactionListComponent },
-  { path: '**', redirectTo: '' }
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutes { }
+
