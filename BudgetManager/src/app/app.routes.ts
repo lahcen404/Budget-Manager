@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BudgetListComponent } from './features/budget/budget-list/budget-list.component';
@@ -15,3 +16,4 @@ export const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutes { }
+

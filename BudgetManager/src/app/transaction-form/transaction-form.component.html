@@ -1,0 +1,26 @@
+<form [formGroup]="transactionForm" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input type="text" id="description" class="form-control" formControlName="description" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="amount" class="form-label">Montant</label>
+    <input type="number" id="amount" class="form-control" formControlName="amount" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="date" class="form-label">Date</label>
+    <input type="date" id="date" class="form-control" formControlName="date" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="category" class="form-label">Catégorie</label>
+    <input type="text" id="category" class="form-control" formControlName="name" formGroupName="category">
+  </div>
+
+  <div class="d-flex justify-content-end gap-2">
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelForm()">Annuler</button>
+  </div>
+</form>
